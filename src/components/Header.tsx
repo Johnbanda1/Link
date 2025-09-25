@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X, Search, Download, Globe } from 'lucide-react';
+import { debounce } from '../utils/performanceOptimizations';
 
 interface HeaderProps {
   language: 'en' | 'fr';
@@ -13,9 +14,10 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = debounce(() => {
       setIsScrolled(window.scrollY > 50);
-    };
+    }, 10);
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

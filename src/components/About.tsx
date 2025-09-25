@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Target, Eye, Shield, Users } from 'lucide-react';
-import { title } from 'framer-motion/client';
+import OptimizedImage from './OptimizedImage';
 
 interface AboutProps {
   language: 'en' | 'fr';
@@ -154,10 +154,13 @@ const About: React.FC<AboutProps> = ({ language }) => {
               whileHover={{ scale: 1.05, rotate: 2 }}
               className="relative overflow-hidden rounded-xl shadow-lg"
             >
-              <img
+              <OptimizedImage
                 src="/assets/images/op2.webp"
                 alt="Mining operations"
                 className="w-full h-32 object-cover"
+                width={200}
+                height={128}
+                lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
@@ -169,10 +172,13 @@ const About: React.FC<AboutProps> = ({ language }) => {
               whileHover={{ scale: 1.05, rotate: -2 }}
               className="relative overflow-hidden rounded-xl shadow-lg"
             >
-              <img
+              <OptimizedImage
                 src="/assets/images/op1.webp"
                 alt="Mining equipment"
                 className="w-full h-32 object-cover"
+                width={200}
+                height={128}
+                lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
@@ -184,10 +190,13 @@ const About: React.FC<AboutProps> = ({ language }) => {
               whileHover={{ scale: 1.05, rotate: 1 }}
               className="relative overflow-hidden rounded-xl shadow-lg"
             >
-              <img
+              <OptimizedImage
                 src="/assets/images/tm.webp"
                 alt="Team collaboration"
                 className="w-full h-32 object-cover"
+                width={200}
+                height={128}
+                lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
@@ -199,10 +208,13 @@ const About: React.FC<AboutProps> = ({ language }) => {
               whileHover={{ scale: 1.05, rotate: -1 }}
               className="relative overflow-hidden rounded-xl shadow-lg"
             >
-              <img
+              <OptimizedImage
                 src="/assets/images/sf3.webp"
                 alt="Safety standards"
                 className="w-full h-32 object-cover"
+                width={200}
+                height={128}
+                lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
               <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">

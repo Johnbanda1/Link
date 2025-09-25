@@ -38,11 +38,17 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
       {/* Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-900/90 via-orange-800/80 to-yellow-700/70 z-10" />
-        <img
+        <picture>
+          <source srcSet="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=1920&fm=avif" type="image/avif" />
+          <source srcSet="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=1920&fm=webp" type="image/webp" />
+          <img
           src="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=1920"
           alt="Mining landscape"
           className="w-full h-full object-cover"
-        />
+          loading="eager"
+          decoding="async"
+          />
+        </picture>
       </div>
 
       {/* Content */}

@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { Suspense } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import About from './components/About';
-import Services from './components/Services';
-import Projects from './components/Projects';
-import Strategy from './components/Strategy';
-import Governance from './components/Governance';
-import Gallery from './components/Gallery';
-import Statistics from './components/Statistics';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import LoadingSpinner from './components/LoadingSpinner';
+import {
+  LazyAbout,
+  LazyServices,
+  LazyProjects,
+  LazyStrategy,
+  LazyGovernance,
+  LazyGallery,
+  LazyStatistics,
+  LazyContact,
+  LazyFooter
+} from './components/LazyComponents';
 
 function App() {
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
@@ -26,16 +30,34 @@ function App() {
       <Header language={language} onLanguageChange={setLanguage} />
       <main>
         <Hero language={language} />
-        <About language={language} />
-        <Services language={language} />
-        <Projects language={language} />
-        <Statistics language={language} />
-        <Gallery language={language} />
-        <Strategy language={language} />
-        <Governance language={language} />
-        <Contact language={language} />
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyAbout language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyServices language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyProjects language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyStatistics language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyGallery language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyStrategy language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyGovernance language={language} />
+        </Suspense>
+        <Suspense fallback={<LoadingSpinner />}>
+          <LazyContact language={language} />
+        </Suspense>
       </main>
-      <Footer language={language} />
+      <Suspense fallback={<LoadingSpinner />}>
+        <LazyFooter language={language} />
+      </Suspense>
     </div>
   );
 }

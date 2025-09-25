@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import OptimizedImage from './OptimizedImage';
 
 interface GalleryProps {
   language: 'en' | 'fr';
@@ -249,10 +250,13 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
                   onClick={() => setSelectedImage(index)}
                 >
                   <div className="aspect-w-16 aspect-h-12">
-                    <img
+                    <OptimizedImage
                       src={image.src}
                       alt={image.title}
                       className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      width={400}
+                      height={256}
+                      lazy={index > 2}
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

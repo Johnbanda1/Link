@@ -185,11 +185,19 @@ const Projects: React.FC<ProjectsProps> = ({ language }) => {
                 className="relative group"
               >
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-amber-200 group-hover:border-amber-400 transition-colors">
-                  <img
+                  <picture>
+                    <source srcSet="/assets/images/gold.avif" type="image/avif" />
+                    <source srcSet="/assets/images/gold.webp" type="image/webp" />
+                    <img
                     src="/assets/images/gold.webp"
                     alt="Gold"
                     className="w-full h-full object-cover"
-                  />
+                    width={96}
+                    height={96}
+                    loading="lazy"
+                    decoding="async"
+                    />
+                  </picture>
                 </div>
                 <div className="text-center mt-3">
                   <h4 className="font-bold text-gray-900">{language === 'en' ? 'Gold' : 'Or'}</h4>
@@ -202,11 +210,19 @@ const Projects: React.FC<ProjectsProps> = ({ language }) => {
                 className="relative group"
               >
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-orange-200 group-hover:border-orange-400 transition-colors">
-                  <img
+                  <picture>
+                    <source srcSet="/assets/images/copper.avif" type="image/avif" />
+                    <source srcSet="/assets/images/copper.webp" type="image/webp" />
+                    <img
                     src="/assets/images/copper.webp"
                     alt="Copper"
                     className="w-full h-full object-cover"
-                  />
+                    width={96}
+                    height={96}
+                    loading="lazy"
+                    decoding="async"
+                    />
+                  </picture>
                 </div>
                 <div className="text-center mt-3">
                   <h4 className="font-bold text-gray-900">{language === 'en' ? 'Copper' : 'Cuivre'}</h4>
@@ -219,11 +235,19 @@ const Projects: React.FC<ProjectsProps> = ({ language }) => {
                 className="relative group"
               >
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-blue-200 group-hover:border-blue-400 transition-colors">
-                  <img
+                  <picture>
+                    <source srcSet="/assets/images/cobalt.avif" type="image/avif" />
+                    <source srcSet="/assets/images/cobalt.webp" type="image/webp" />
+                    <img
                     src="/assets/images/cobalt.webp"
                     alt="Cobalt"
                     className="w-full h-full object-cover"
-                  />
+                    width={96}
+                    height={96}
+                    loading="lazy"
+                    decoding="async"
+                    />
+                  </picture>
                 </div>
                 <div className="text-center mt-3">
                   <h4 className="font-bold text-gray-900">Cobalt</h4>
@@ -236,11 +260,19 @@ const Projects: React.FC<ProjectsProps> = ({ language }) => {
                 className="relative group"
               >
                 <div className="w-24 h-24 mx-auto rounded-full overflow-hidden shadow-lg border-4 border-gray-200 group-hover:border-gray-400 transition-colors">
-                  <img
+                  <picture>
+                    <source srcSet="/assets/images/coltan.avif" type="image/avif" />
+                    <source srcSet="/assets/images/coltan.webp" type="image/webp" />
+                    <img
                     src="/assets/images/coltan.webp"
                     alt="Coltan"
                     className="w-full h-full object-cover"
-                  />
+                    width={96}
+                    height={96}
+                    loading="lazy"
+                    decoding="async"
+                    />
+                  </picture>
                 </div>
                 <div className="text-center mt-3">
                   <h4 className="font-bold text-gray-900">Coltan</h4>
