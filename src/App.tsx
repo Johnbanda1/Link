@@ -25,6 +25,23 @@ function App() {
       : 'Bridgelink Mineral Consultants Ltd - Excellence Minière en Zambie et RDC';
   }, [language]);
 
+  // Ensure all sections are properly spaced for mobile navigation
+  React.useEffect(() => {
+    // Add padding-top to account for fixed header on mobile
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (max-width: 1024px) {
+        section[id] {
+          scroll-margin-top: 80px;
+        }
+      }
+    `;
+    document.head.appendChild(style);
+    
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
   return (
     <div className="min-h-screen bg-white">
       <Header language={language} onLanguageChange={setLanguage} />

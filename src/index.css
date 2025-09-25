@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Ensure smooth scrolling and proper mobile navigation */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 1024px) {
+  /* Ensure sections have proper spacing for mobile navigation */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+  
+  /* Prevent horizontal scroll on mobile */
+  body {
+    overflow-x: hidden;
+  }
+  
+  /* Ensure mobile menu doesn't interfere with content */
+  .mobile-menu-container {
+    touch-action: pan-y;
+  }
+}
+
+/* Improve touch targets on mobile */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
