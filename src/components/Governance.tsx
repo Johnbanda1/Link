@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Shield, Users, FileText, Award, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Shield, Users, FileText, Award, CircleCheck as CheckCircle, TriangleAlert as AlertTriangle } from 'lucide-react';
 
 interface GovernanceProps {
   language: 'en' | 'fr';

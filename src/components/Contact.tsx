@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useForm } from 'react-hook-form';
-import { Mail, Phone, MapPin, Send, User, MessageSquare, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, User, MessageSquare, CircleCheck as CheckCircle } from 'lucide-react';
 
 interface ContactProps {
   language: 'en' | 'fr';

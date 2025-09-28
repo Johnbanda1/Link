@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Search, TestTube, BarChart3, Leaf, Clock, Award, Globe, Users } from 'lucide-react';
+import { Search, TestTube, ChartBar as BarChart3, Leaf, Clock, Award, Globe, Users } from 'lucide-react';
 
 interface ServicesProps {
   language: 'en' | 'fr';
