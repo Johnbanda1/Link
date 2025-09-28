@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { isMobileDevice, getOptimizedImageSrc } from '../utils/performanceOptimizations';
 
 interface OptimizedImageProps {
   src: string;
@@ -22,6 +23,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [isLoaded, setIsLoaded] = useState(false);
   const [isInView, setIsInView] = useState(!lazy || priority);
   const imgRef = useRef<HTMLImageElement>(null);
+  const isMobile = isMobileDevice();
 
   useEffect(() => {
     if (!lazy || priority) return;
@@ -44,8 +46,9 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   }, [lazy, priority]);
 
   // Generate WebP and fallback sources
-  const webpSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.webp');
-  const avifSrc = src.replace(/\.(jpg|jpeg|png)$/i, '.avif');
+  const optimizedSrc = getOptimizedImageSrc(src, isMobile);
+  const webpSrc = optimizedSrc.replace(/\.(jpg|jpeg|png)$/i, '.webp');
+  const avifSrc = optimizedSrc.replace(/\.(jpg|jpeg|png)$/i, '.avif');
 
   return (
     <div ref={imgRef} className={`relative overflow-hidden ${className}`}>
@@ -54,12 +57,13 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
           <source srcSet={avifSrc} type="image/avif" />
           <source srcSet={webpSrc} type="image/webp" />
           <img
-            src={src}
+            src={optimizedSrc}
             alt={alt}
             width={width}
             height={height}
             loading={priority ? 'eager' : 'lazy'}
             decoding="async"
+            fetchPriority={priority ? 'high' : 'auto'}
             onLoad={() => setIsLoaded(true)}
             className={`transition-opacity duration-300 ${
               isLoaded ? 'opacity-100' : 'opacity-0'
@@ -68,7 +72,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         </picture>
       )}
       {!isLoaded && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse" />
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded" />
       )}
     </div>
   );

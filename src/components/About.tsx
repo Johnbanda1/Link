@@ -88,19 +88,19 @@ const About: React.FC<AboutProps> = ({ language }) => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 px-4 sm:px-0">
               {content[language].title}
             </h2>
-            <p className="text-xl text-amber-600 font-semibold">
+            <p className="text-lg sm:text-xl text-amber-600 font-semibold px-4 sm:px-0">
               {content[language].subtitle}
             </p>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-6 sm:px-4">
               {content[language].history}
             </p>
           </motion.div>
 
           {/* Mission & Vision */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
               <div className="flex items-center space-x-3 mb-6">
                 <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
@@ -124,10 +124,10 @@ const About: React.FC<AboutProps> = ({ language }) => {
 
           {/* Values */}
           <motion.div variants={itemVariants} className="space-y-8">
-            <h3 className="text-3xl font-bold text-gray-900 text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center px-4 sm:px-0">
               {content[language].values.title}
             </h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {content[language].values.items.map((value, index) => (
                 <motion.div
                   key={value.title}
@@ -148,7 +148,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
           {/* Visual Gallery */}
           <motion.div 
             variants={itemVariants}
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-12"
           >
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 2 }}
@@ -157,7 +157,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
               <OptimizedImage
                 src="/assets/images/op2.webp"
                 alt="Mining operations"
-                className="w-full h-32 object-cover"
+                className="w-full h-24 sm:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
@@ -175,7 +175,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
               <OptimizedImage
                 src="/assets/images/op1.webp"
                 alt="Mining equipment"
-                className="w-full h-32 object-cover"
+                className="w-full h-24 sm:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
@@ -193,7 +193,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
               <OptimizedImage
                 src="/assets/images/tm.webp"
                 alt="Team collaboration"
-                className="w-full h-32 object-cover"
+                className="w-full h-24 sm:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
@@ -211,7 +211,7 @@ const About: React.FC<AboutProps> = ({ language }) => {
               <OptimizedImage
                 src="/assets/images/sf3.webp"
                 alt="Safety standards"
-                className="w-full h-32 object-cover"
+                className="w-full h-24 sm:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}

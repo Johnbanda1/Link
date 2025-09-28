@@ -202,26 +202,26 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-white">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white px-4 sm:px-0">
               {content[language].title}
             </h2>
-            <p className="text-xl text-amber-400 font-semibold">
+            <p className="text-lg sm:text-xl text-amber-400 font-semibold px-4 sm:px-0">
               {content[language].subtitle}
             </p>
-            <p className="text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto leading-relaxed px-6 sm:px-4">
               {content[language].description}
             </p>
           </motion.div>
 
           {/* Filter Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4">
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-2 sm:gap-4 px-4 sm:px-0">
             {content[language].categories.map((category) => (
               <motion.button
                 key={category.filter}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setActiveFilter(category.filter)}
-                className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full font-semibold transition-all duration-300 text-sm sm:text-base min-h-[44px] flex items-center ${
                   activeFilter === category.filter
                     ? 'bg-amber-600 text-white shadow-lg'
                     : 'bg-gray-800 text-gray-300 hover:bg-gray-700 hover:text-white'
@@ -235,7 +235,7 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
           {/* Image Grid */}
           <motion.div 
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             <AnimatePresence>
               {filteredImages.map((image, index) => (
@@ -253,15 +253,15 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
                     <OptimizedImage
                       src={image.src}
                       alt={image.title}
-                      className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-48 sm:h-56 lg:h-64 object-cover transition-transform duration-500 group-hover:scale-110"
                       width={400}
                       height={256}
                       lazy={index > 2}
                     />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="text-xl font-bold text-white mb-2">{image.title}</h3>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{image.title}</h3>
                     <p className="text-gray-300 text-sm">{image.description}</p>
                   </div>
                 </motion.div>
@@ -278,39 +278,39 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-2 sm:p-4"
             onClick={() => setSelectedImage(null)}
           >
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="relative max-w-4xl max-h-full"
+              className="relative max-w-full max-h-full w-full sm:max-w-4xl"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={filteredImages[selectedImage]?.src}
                 alt={filteredImages[selectedImage]?.title}
-                className="max-w-full max-h-[80vh] object-contain rounded-lg"
+                className="max-w-full max-h-[70vh] sm:max-h-[80vh] object-contain rounded-lg mx-auto"
               />
               
               {/* Controls */}
-              <div className="absolute top-4 right-4 flex space-x-2">
+              <div className="absolute top-2 right-2 sm:top-4 sm:right-4 flex space-x-2">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setIsAutoPlay(!isAutoPlay)}
-                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
                 >
-                  {isAutoPlay ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
+                  {isAutoPlay ? <Pause className="w-4 h-4 sm:w-6 sm:h-6" /> : <Play className="w-4 h-4 sm:w-6 sm:h-6" />}
                 </motion.button>
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
                   onClick={() => setSelectedImage(null)}
-                  className="w-12 h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                  className="w-10 h-10 sm:w-12 sm:h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-4 h-4 sm:w-6 sm:h-6" />
                 </motion.button>
               </div>
 
@@ -319,26 +319,26 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
               >
-                <ChevronLeft className="w-6 h-6" />
+                <ChevronLeft className="w-4 h-4 sm:w-6 sm:h-6" />
               </motion.button>
               
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
+                className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-black/70 transition-colors"
               >
-                <ChevronRight className="w-6 h-6" />
+                <ChevronRight className="w-4 h-4 sm:w-6 sm:h-6" />
               </motion.button>
 
               {/* Image Info */}
-              <div className="absolute bottom-4 left-4 right-4 bg-black/50 rounded-lg p-4">
-                <h3 className="text-xl font-bold text-white mb-2">
+              <div className="absolute bottom-2 left-2 right-2 sm:bottom-4 sm:left-4 sm:right-4 bg-black/50 rounded-lg p-3 sm:p-4">
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">
                   {filteredImages[selectedImage]?.title}
                 </h3>
-                <p className="text-gray-300">
+                <p className="text-gray-300 text-sm sm:text-base">
                   {filteredImages[selectedImage]?.description}
                 </p>
               </div>

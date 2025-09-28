@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Search, Download, Globe } from 'lucide-react';
+import { Menu, X, Download, Globe } from 'lucide-react';
 import { debounce } from '../utils/performanceOptimizations';
 
 interface HeaderProps {
@@ -11,7 +11,6 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const handleScroll = debounce(() => {
@@ -113,12 +112,12 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
           </motion.div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             {navigation[language].map((item) => (
               <button
                 key={item.name}
                 onClick={() => scrollToSection(item.href)}
-                className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-200"
+                className="text-gray-700 hover:text-amber-600 font-medium transition-colors duration-200 text-sm xl:text-base"
               >
                 {item.name}
               </button>
@@ -127,21 +126,10 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
 
           {/* Search and Actions */}
           <div className="hidden lg:flex items-center space-x-4">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-              <input
-                type="text"
-                placeholder={language === 'en' ? 'Search...' : 'Rechercher...'}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
-              />
-            </div>
-            
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex items-center space-x-2 bg-amber-600 text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors"
+              className="flex items-center space-x-2 bg-amber-600 text-white px-3 xl:px-4 py-2 rounded-lg hover:bg-amber-700 transition-colors text-sm xl:text-base"
             >
               <Download className="w-4 h-4" />
               <span>{language === 'en' ? 'Profile' : 'Profil'}</span>
@@ -149,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
 
             <button
               onClick={() => onLanguageChange(language === 'en' ? 'fr' : 'en')}
-              className="flex items-center space-x-1 px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+              className="flex items-center space-x-1 px-2 xl:px-3 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors text-sm xl:text-base"
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium">{language.toUpperCase()}</span>
@@ -159,7 +147,7 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors z-50 relative"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors z-50 relative min-h-[44px] min-w-[44px] flex items-center justify-center"
           >
             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
@@ -181,12 +169,12 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
       <motion.div
         initial={{ x: '100%' }}
         animate={{ x: isMenuOpen ? 0 : '100%' }}
-        transition={{ type: 'tween', duration: 0.3 }}
-        className="lg:hidden fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-white shadow-2xl z-50 mobile-menu-container"
+        transition={{ type: 'tween', duration: 0.25 }}
+        className="lg:hidden fixed top-0 right-0 h-full w-72 max-w-[80vw] bg-white shadow-2xl z-50 mobile-menu-container"
       >
         <div className="flex flex-col h-full">
           {/* Mobile Menu Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
+          <div className="flex items-center justify-between p-4 border-b border-gray-200">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">BM</span>
@@ -198,22 +186,22 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
             </div>
             <button
               onClick={() => setIsMenuOpen(false)}
-              className="p-2 rounded-lg hover:bg-gray-100 transition-colors"
+              className="p-2 rounded-lg hover:bg-gray-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
             >
               <X className="w-6 h-6" />
             </button>
           </div>
 
           {/* Mobile Menu Navigation */}
-          <div className="flex-1 overflow-y-auto py-6">
-            <nav className="space-y-2 px-6">
+          <div className="flex-1 overflow-y-auto py-4">
+            <nav className="space-y-1 px-4">
               {navigation[language].map((item) => (
                 <motion.button
                   key={item.name}
                   whileHover={{ x: 5 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={() => scrollToSection(item.href)}
-                  className="flex items-center w-full text-left px-4 py-3 text-gray-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all duration-200 font-medium"
+                  className="flex items-center w-full text-left px-4 py-4 text-gray-700 hover:text-amber-600 hover:bg-amber-50 rounded-lg transition-all duration-200 font-medium text-base min-h-[48px]"
                 >
                   <span>{item.name}</span>
                 </motion.button>
@@ -222,17 +210,17 @@ const Header: React.FC<HeaderProps> = ({ language, onLanguageChange }) => {
           </div>
 
           {/* Mobile Menu Footer */}
-          <div className="border-t border-gray-200 p-6 space-y-4">
+          <div className="border-t border-gray-200 p-4 space-y-3">
             <button
               onClick={() => onLanguageChange(language === 'en' ? 'fr' : 'en')}
-              className="flex items-center justify-center space-x-2 w-full px-4 py-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors"
+              className="flex items-center justify-center space-x-2 w-full px-4 py-3 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors min-h-[48px]"
             >
               <Globe className="w-4 h-4" />
               <span className="text-sm font-medium">{language.toUpperCase()}</span>
             </button>
             <motion.button
               whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center space-x-2 w-full bg-amber-600 text-white px-4 py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium"
+              className="flex items-center justify-center space-x-2 w-full bg-amber-600 text-white px-4 py-3 rounded-lg hover:bg-amber-700 transition-colors font-medium min-h-[48px]"
             >
               <Download className="w-4 h-4" />
               <span>{language === 'en' ? 'Profile' : 'Profil'}</span>

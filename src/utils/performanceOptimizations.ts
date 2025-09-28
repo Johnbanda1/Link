@@ -1,5 +1,22 @@
 // Performance optimization utilities
 
+// Check if device has reduced motion preference
+export const prefersReducedMotion = () => {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+};
+
+// Get animation config based on user preference
+export const getAnimationConfig = (defaultConfig: any) => {
+  if (prefersReducedMotion()) {
+    return {
+      ...defaultConfig,
+      duration: 0.01,
+      transition: { duration: 0.01 }
+    };
+  }
+  return defaultConfig;
+};
+
 // Debounce function to limit function calls
 export const debounce = <T extends (...args: any[]) => any>(
   func: T,
@@ -78,4 +95,38 @@ export const optimizeScroll = () => {
   };
   
   return onScroll;
+};
+
+// Detect mobile device
+export const isMobileDevice = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
+// Optimize touch events for mobile
+export const optimizeTouchEvents = () => {
+  if (isMobileDevice()) {
+    // Add passive event listeners for better scroll performance
+    document.addEventListener('touchstart', () => {}, { passive: true });
+    document.addEventListener('touchmove', () => {}, { passive: true });
+  }
+};
+
+// Intersection Observer with mobile optimizations
+export const createOptimizedObserver = (callback: IntersectionObserverCallback, options?: IntersectionObserverInit) => {
+  const defaultOptions = {
+    rootMargin: isMobileDevice() ? '50px' : '100px',
+    threshold: isMobileDevice() ? 0.1 : 0.3,
+    ...options
+  };
+  
+  return new IntersectionObserver(callback, defaultOptions);
+};
+
+// Optimize images for mobile
+export const getOptimizedImageSrc = (src: string, isMobile: boolean = false) => {
+  if (isMobile && src.includes('pexels.com')) {
+    // Use smaller image sizes for mobile
+    return src.replace('w=1920', 'w=800').replace('w=1200', 'w=600');
+  }
+  return src;
 };

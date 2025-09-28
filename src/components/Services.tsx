@@ -121,33 +121,33 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 px-4 sm:px-0">
               {content[language].title}
             </h2>
-            <p className="text-xl text-amber-600 font-semibold">
+            <p className="text-lg sm:text-xl text-amber-600 font-semibold px-4 sm:px-0">
               {content[language].subtitle}
             </p>
           </motion.div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {content[language].services.map((service, index) => (
               <motion.div
                 key={service.title}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="bg-gray-50 rounded-2xl p-8 shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300"
+                className="bg-gray-50 rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-start space-x-4">
+                <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4">
                   <div className="flex-shrink-0">
-                    <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                       <service.icon className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div className="flex-1 space-y-4">
-                    <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{service.description}</p>
-                    <ul className="grid grid-cols-2 gap-2">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900">{service.title}</h3>
+                    <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{service.description}</p>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {service.features.map((feature, idx) => (
                         <li key={idx} className="flex items-center space-x-2">
                           <div className="w-2 h-2 bg-amber-500 rounded-full" />
@@ -162,7 +162,7 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
           </div>
 
           {/* Features */}
-          <motion.div variants={itemVariants} className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-3xl p-8 md:p-12">
+          <motion.div variants={itemVariants} className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-3xl p-6 sm:p-8 lg:p-12 relative">
             {/* Decorative Elements */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden rounded-3xl">
               <motion.div
@@ -177,10 +177,10 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
               />
             </div>
             
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8 sm:mb-12 px-4 sm:px-0 relative z-10">
               {content[language].features.title}
             </h3>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
               {content[language].features.items.map((feature, index) => (
                 <motion.div
                   key={feature.title}
@@ -188,10 +188,10 @@ const Services: React.FC<ServicesProps> = ({ language }) => {
                   whileHover={{ scale: 1.05 }}
                   className="text-center space-y-4 group"
                 >
-                  <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow">
                     <feature.icon className="w-8 h-8 text-amber-600" />
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900">{feature.title}</h4>
+                  <h4 className="text-base sm:text-lg font-bold text-gray-900">{feature.title}</h4>
                   <p className="text-gray-600 text-sm">{feature.description}</p>
                 </motion.div>
               ))}

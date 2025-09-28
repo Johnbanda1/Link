@@ -99,51 +99,60 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const headerHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - headerHeight;
+      
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Facebook, href: '#', label: 'Facebook' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/bridgelink-mineral-consultants', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://twitter.com/bridgelinkmc', label: 'Twitter' },
+    { icon: Facebook, href: 'https://www.facebook.com/bridgelinkmc', label: 'Facebook' }
   ];
 
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 sm:mb-12">
           {/* Company Info */}
           <div className="lg:col-span-1">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-4"
+              className="space-y-4 text-center sm:text-left"
             >
               <div className="flex items-center space-x-3">
-                <div className="w-12 h-12 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-amber-500 to-orange-600 rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">BM</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg">Bridgelink</h3>
+                  <h3 className="font-bold text-base sm:text-lg">Bridgelink</h3>
                   <p className="text-amber-400 text-sm">Mineral Consultants</p>
                 </div>
               </div>
               <p className="text-amber-400 font-semibold">{content[language].company.tagline}</p>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-300 text-sm leading-relaxed max-w-xs sm:max-w-none">
                 {content[language].company.description}
               </p>
               
               {/* Social Links */}
-              <div className="flex space-x-4 pt-4">
+              <div className="flex space-x-4 pt-4 justify-center sm:justify-start">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     href={social.href}
-                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-amber-600 transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-amber-600 transition-colors min-h-[44px] min-w-[44px]"
                     aria-label={social.label}
                   >
                     <social.icon className="w-5 h-5" />
@@ -154,19 +163,19 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-center sm:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <h4 className="text-lg font-bold mb-6 text-amber-400">{content[language].links.title}</h4>
+              <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-amber-400">{content[language].links.title}</h4>
               <ul className="space-y-3">
                 {content[language].links.items.map((item) => (
                   <li key={item.name}>
                     <button
                       onClick={() => scrollToSection(item.href)}
-                      className="text-gray-300 hover:text-amber-400 transition-colors text-sm"
+                      className="text-gray-300 hover:text-amber-400 transition-colors text-sm min-h-[44px] py-2"
                     >
                       {item.name}
                     </button>
@@ -177,13 +186,13 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           </div>
 
           {/* Services */}
-          <div>
+          <div className="text-center sm:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <h4 className="text-lg font-bold mb-6 text-amber-400">{content[language].services.title}</h4>
+              <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-amber-400">{content[language].services.title}</h4>
               <ul className="space-y-3">
                 {content[language].services.items.map((service) => (
                   <li key={service} className="text-gray-300 text-sm">
@@ -195,15 +204,15 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="text-center sm:text-left">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <h4 className="text-lg font-bold mb-6 text-amber-400">{content[language].contact.title}</h4>
+              <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6 text-amber-400">{content[language].contact.title}</h4>
               <div className="space-y-4">
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 justify-center sm:justify-start">
                   <MapPin className="w-5 h-5 text-amber-500 flex-shrink-0" />
                   <div>
                     <p className="text-gray-300 text-sm">{content[language].contact.zambia}</p>
@@ -211,7 +220,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   </div>
                 </div>
                 
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 justify-center sm:justify-start">
                   <Mail className="w-5 h-5 text-amber-500 flex-shrink-0" />
                   <a 
                     href={`mailto:${content[language].contact.email}`}
@@ -221,7 +230,7 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
                   </a>
                 </div>
                 
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3 justify-center sm:justify-start">
                   <Globe className="w-5 h-5 text-amber-500 flex-shrink-0" />
                   <span className="text-gray-300 text-sm">{content[language].contact.website}</span>
                 </div>
@@ -235,12 +244,12 @@ const Footer: React.FC<FooterProps> = ({ language }) => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="pt-8 border-t border-gray-800"
+          className="pt-6 sm:pt-8 border-t border-gray-800"
         >
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">{content[language].legal.copyright}</p>
+          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0 text-center sm:text-left">
+            <p className="text-gray-400 text-xs sm:text-sm">{content[language].legal.copyright}</p>
             
-            <div className="flex space-x-6 text-sm">
+            <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm">
               <button className="text-gray-400 hover:text-amber-400 transition-colors">
                 {content[language].legal.privacy}
               </button>

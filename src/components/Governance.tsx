@@ -163,33 +163,33 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 px-4 sm:px-0">
               {content[language].title}
             </h2>
-            <p className="text-xl text-amber-600 font-semibold">
+            <p className="text-lg sm:text-xl text-amber-600 font-semibold px-4 sm:px-0">
               {content[language].subtitle}
             </p>
-            <p className="text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-6 sm:px-4">
               {content[language].description}
             </p>
           </motion.div>
 
           {/* Governance Principles */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             {content[language].principles.map((principle, index) => (
               <motion.div
                 key={principle.title}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
-                className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-lg border border-gray-100 group hover:shadow-xl transition-all duration-300"
               >
-                <div className="flex items-start space-x-4 mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                <div className="flex flex-col sm:flex-row items-start space-y-4 sm:space-y-0 sm:space-x-4 mb-6">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform">
                     <principle.icon className="w-8 h-8 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2">{principle.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{principle.description}</p>
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2">{principle.title}</h3>
+                    <p className="text-gray-600 leading-relaxed text-sm sm:text-base">{principle.description}</p>
                   </div>
                 </div>
                 
@@ -197,7 +197,7 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
                   {principle.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center space-x-3">
                       <div className="w-2 h-2 bg-amber-500 rounded-full flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-gray-700 text-sm sm:text-base">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -206,12 +206,12 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
           </div>
 
           {/* Policies & Frameworks */}
-          <motion.div variants={itemVariants} className="bg-white rounded-3xl p-8 md:p-12 shadow-xl">
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <motion.div variants={itemVariants} className="bg-white rounded-3xl p-6 sm:p-8 lg:p-12 shadow-xl">
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center mb-8 sm:mb-12 px-4 sm:px-0">
               {content[language].policies.title}
             </h3>
             
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {content[language].policies.items.map((policy, index) => (
                 <motion.div
                   key={policy.title}
@@ -226,7 +226,7 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
                       policy.icon === CheckCircle ? 'text-green-600' : 'text-amber-600'
                     }`} />
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-2">{policy.title}</h4>
+                  <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2">{policy.title}</h4>
                   <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
                     policy.status === 'Implemented' || policy.status === 'Implémentée' ? 'bg-green-100 text-green-800' :
                     policy.status === 'Active' ? 'bg-blue-100 text-blue-800' :
@@ -243,13 +243,13 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
           {/* Commitment Statement */}
           <motion.div 
             variants={itemVariants}
-            className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-3xl p-8 md:p-12 text-center"
+            className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-3xl p-6 sm:p-8 lg:p-12 text-center"
           >
             <div className="max-w-4xl mx-auto text-white space-y-6">
-              <h3 className="text-3xl font-bold">
+              <h3 className="text-2xl sm:text-3xl font-bold px-4 sm:px-0">
                 {language === 'en' ? 'Our Commitment to Excellence' : 'Notre Engagement envers l\'Excellence'}
               </h3>
-              <p className="text-xl leading-relaxed opacity-90">
+              <p className="text-base sm:text-lg lg:text-xl leading-relaxed opacity-90 px-4 sm:px-0">
                 {language === 'en' 
                   ? 'We pledge to maintain the highest standards of corporate governance, ensuring transparency, accountability, and sustainable value creation for all stakeholders.'
                   : 'Nous nous engageons à maintenir les plus hauts standards de gouvernance d\'entreprise, assurant transparence, responsabilité et création de valeur durable pour toutes les parties prenantes.'
@@ -259,7 +259,7 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="bg-white text-amber-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors"
+                  className="bg-white text-amber-600 px-6 sm:px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors min-h-[48px]"
                 >
                   {language === 'en' ? 'Learn More' : 'En Savoir Plus'}
                 </motion.button>

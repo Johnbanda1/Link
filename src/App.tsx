@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Suspense } from 'react';
+import { optimizeTouchEvents } from './utils/performanceOptimizations';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -23,6 +24,9 @@ function App() {
     document.title = language === 'en' 
       ? 'Bridgelink Mineral Consultants Ltd - Mining Excellence in Zambia & DRC'
       : 'Bridgelink Mineral Consultants Ltd - Excellence Minière en Zambie et RDC';
+    
+    // Optimize touch events for mobile
+    optimizeTouchEvents();
   }, [language]);
 
   // Ensure all sections are properly spaced for mobile navigation
@@ -34,6 +38,17 @@ function App() {
         section[id] {
           scroll-margin-top: 80px;
         }
+        
+        /* Improve mobile scrolling */
+        body {
+          -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Optimize mobile animations */
+        * {
+          -webkit-transform: translateZ(0);
+          transform: translateZ(0);
+        }
       }
     `;
     document.head.appendChild(style);
@@ -42,6 +57,7 @@ function App() {
       document.head.removeChild(style);
     };
   }, []);
+  
   return (
     <div className="min-h-screen bg-white">
       <Header language={language} onLanguageChange={setLanguage} />

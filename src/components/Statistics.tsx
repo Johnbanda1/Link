@@ -159,39 +159,39 @@ const Statistics: React.FC<StatisticsProps> = ({ language }) => {
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 px-4 sm:px-0">
               {content[language].title}
             </h2>
-            <p className="text-xl text-amber-600 font-semibold">
+            <p className="text-lg sm:text-xl text-amber-600 font-semibold px-4 sm:px-0">
               {content[language].subtitle}
             </p>
           </motion.div>
 
           {/* Statistics Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {content[language].stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100 text-center group hover:shadow-2xl transition-all duration-300"
+                className="bg-white rounded-2xl p-6 sm:p-8 shadow-xl border border-gray-100 text-center group hover:shadow-2xl transition-all duration-300"
               >
-                <div className={`w-20 h-20 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform`}>
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r ${stat.color} rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 group-hover:scale-110 transition-transform`}>
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
                 
                 <motion.div
                   variants={countUpVariants}
-                  className="text-4xl md:text-5xl font-bold text-gray-900 mb-2"
+                  className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-2"
                 >
                   {stat.number}
                 </motion.div>
                 
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3">
                   {stat.label}
                 </h3>
                 
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed text-sm sm:text-base">
                   {stat.description}
                 </p>
 
@@ -209,25 +209,25 @@ const Statistics: React.FC<StatisticsProps> = ({ language }) => {
           {/* Achievement Banner */}
           <motion.div
             variants={itemVariants}
-            className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-3xl p-8 md:p-12 text-center shadow-2xl"
+            className="bg-gradient-to-r from-amber-600 to-orange-600 rounded-3xl p-6 sm:p-8 lg:p-12 text-center shadow-2xl"
           >
             <div className="max-w-4xl mx-auto text-white space-y-6">
               <motion.div
                 animate={{ rotate: [0, 5, -5, 0] }}
                 transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6"
+                className="w-16 h-16 sm:w-20 sm:h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 sm:mb-6"
               >
                 <Award className="w-10 h-10 text-white" />
               </motion.div>
               
-              <h3 className="text-3xl md:text-4xl font-bold">
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold px-4 sm:px-0">
                 {language === 'en' 
                   ? 'Leading the Future of Mining in Africa'
                   : 'Mener l\'Avenir de l\'Exploitation Minière en Afrique'
                 }
               </h3>
               
-              <p className="text-xl leading-relaxed opacity-90">
+              <p className="text-base sm:text-lg lg:text-xl leading-relaxed opacity-90 px-4 sm:px-0">
                 {language === 'en'
                   ? 'With over a decade of excellence, we continue to set new standards in sustainable mining practices while delivering exceptional value to our stakeholders.'
                   : 'Avec plus d\'une décennie d\'excellence, nous continuons à établir de nouvelles normes dans les pratiques minières durables tout en offrant une valeur exceptionnelle à nos parties prenantes.'

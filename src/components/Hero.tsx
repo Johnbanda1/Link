@@ -70,7 +70,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight"
+            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight px-4 sm:px-0"
           >
             {content[language].title}
           </motion.h1>
@@ -81,10 +81,10 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="space-y-4"
           >
-            <p className="text-xl sm:text-2xl md:text-3xl font-semibold text-amber-200">
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-amber-200 px-4 sm:px-0">
               {content[language].subtitle}
             </p>
-            <p className="text-base sm:text-lg md:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed px-6 sm:px-4">
               {content[language].description}
             </p>
           </motion.div>
@@ -93,13 +93,13 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-6 sm:px-4"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#about')}
-              className="flex items-center space-x-2 bg-amber-600 hover:bg-amber-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto justify-center"
+              className="flex items-center space-x-2 bg-amber-600 hover:bg-amber-700 text-white px-6 sm:px-8 py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto justify-center min-h-[48px]"
             >
               <span>{content[language].cta1}</span>
               <ArrowRight className="w-5 h-5" />
@@ -109,7 +109,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className="flex items-center space-x-2 border-2 border-white text-white hover:bg-white hover:text-amber-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto justify-center"
+              className="flex items-center space-x-2 border-2 border-white text-white hover:bg-white hover:text-amber-900 px-6 sm:px-8 py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto justify-center min-h-[48px]"
             >
               <span>{content[language].cta2}</span>
             </motion.button>
@@ -136,9 +136,9 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
       </div>
 
       {/* Floating elements */}
-      <div className="absolute inset-0 z-10 hidden md:block">
+      <div className="absolute inset-0 z-10 hidden lg:block">
         {/* Animated particles */}
-        {[...Array(20)].map((_, i) => (
+        {[...Array(15)].map((_, i) => (
           <motion.div
             key={i}
             animate={{
@@ -150,7 +150,8 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
             transition={{
               duration: 3 + Math.random() * 4,
               repeat: Infinity,
-              delay: Math.random() * 2
+              delay: Math.random() * 2,
+              ease: "easeInOut"
             }}
             className="absolute w-2 h-2 bg-amber-400/40 rounded-full"
             style={{
