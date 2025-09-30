@@ -73,11 +73,6 @@ export const loadCSS = (href: string) => {
   document.head.appendChild(link);
 };
 
-// Check if user prefers reduced motion
-export const prefersReducedMotion = () => {
-  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-};
-
 // Optimize scroll performance
 export const optimizeScroll = () => {
   let ticking = false;
