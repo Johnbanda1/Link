@@ -41,9 +41,9 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
       {/* Background */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 w-full h-full">
         <div className="absolute inset-0 bg-gradient-to-br from-amber-900/90 via-orange-800/80 to-yellow-700/70 z-10" />
         <picture>
           <source srcSet="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=1920&fm=avif" type="image/avif" />
@@ -51,7 +51,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
           <img
           src="https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=1920"
           alt="Mining landscape"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover min-h-screen"
           loading="eager"
           decoding="async"
           />
@@ -59,18 +59,18 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
       </div>
 
       {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 lg:pt-0">
+      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center pt-20 lg:pt-0 w-full">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           className="space-y-8"
         >
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-white leading-tight px-4 sm:px-0"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-xl sm:text-2xl md:text-3xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight px-2 sm:px-4 lg:px-0"
           >
             {content[language].title}
           </motion.h1>
@@ -78,13 +78,13 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-4"
           >
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-amber-200 px-4 sm:px-0">
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold text-amber-200 px-2 sm:px-4 lg:px-0">
               {content[language].subtitle}
             </p>
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed px-6 sm:px-4">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-100 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 lg:px-4">
               {content[language].description}
             </p>
           </motion.div>
@@ -92,14 +92,14 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-6 sm:px-4"
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center items-center px-4 sm:px-6 lg:px-4"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#about')}
-              className="flex items-center space-x-2 bg-amber-600 hover:bg-amber-700 text-white px-6 sm:px-8 py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto justify-center min-h-[48px]"
+              className="flex items-center space-x-2 bg-amber-600 hover:bg-amber-700 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base lg:text-lg transition-colors duration-200 w-full sm:w-auto justify-center min-h-[44px] sm:min-h-[48px]"
             >
               <span>{content[language].cta1}</span>
               <ArrowRight className="w-5 h-5" />
@@ -109,7 +109,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => scrollToSection('#contact')}
-              className="flex items-center space-x-2 border-2 border-white text-white hover:bg-white hover:text-amber-900 px-6 sm:px-8 py-4 rounded-lg font-semibold text-base sm:text-lg transition-colors duration-200 w-full sm:w-auto justify-center min-h-[48px]"
+              className="flex items-center space-x-2 border-2 border-white text-white hover:bg-white hover:text-amber-900 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-sm sm:text-base lg:text-lg transition-colors duration-200 w-full sm:w-auto justify-center min-h-[44px] sm:min-h-[48px]"
             >
               <span>{content[language].cta2}</span>
             </motion.button>
@@ -120,7 +120,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
         >
           <motion.div
@@ -136,9 +136,9 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
       </div>
 
       {/* Floating elements */}
-      <div className="absolute inset-0 z-10 hidden lg:block">
+      <div className="absolute inset-0 z-10 hidden md:block">
         {/* Animated particles */}
-        {[...Array(15)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             animate={{
@@ -148,7 +148,7 @@ const Hero: React.FC<HeroProps> = ({ language }) => {
               scale: [1, 1.2, 1]
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: 4 + Math.random() * 3,
               repeat: Infinity,
               delay: Math.random() * 2,
               ease: "easeInOut"

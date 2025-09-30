@@ -7,18 +7,52 @@ html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+  /* Prevent horizontal scroll on mobile */
+  overflow-x: hidden;
 }
 
 body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* Improve mobile performance */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent bounce scrolling on iOS */
+  overscroll-behavior-y: none;
+}
+
+/* Fix viewport issues on mobile */
+@media screen and (max-width: 768px) {
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
 }
 
 /* Ensure proper spacing for mobile navigation */
 @media (max-width: 1024px) {
   section[id] {
-    scroll-margin-top: 80px;
+    scroll-margin-top: 70px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Mobile-specific optimizations */
+@media (max-width: 640px) {
+  section {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
@@ -56,6 +90,13 @@ body {
   
   h1, h2, h3, h4, h5, h6 {
     line-height: 1.3;
+    word-wrap: break-word;
+    hyphens: auto;
+  }
+  
+  p {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 }
 
@@ -77,11 +118,52 @@ img {
 /* Optimize scrolling performance */
 * {
   scroll-behavior: smooth;
+  /* Prevent layout shifts */
+  contain: layout style paint;
+}
+
+/* Mobile performance optimizations */
+@media (max-width: 768px) {
+  * {
+    /* Use hardware acceleration */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    /* Optimize repaints */
+    will-change: auto;
+  }
+  
+  /* Optimize animations for mobile */
+  .motion-reduce {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Better mobile form styling */
 @media (max-width: 640px) {
   input, textarea, select {
     font-size: 16px; /* Prevents zoom on iOS */
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* Fix common mobile layout issues */
+@media (max-width: 768px) {
+  .grid {
+    gap: 1rem;
+  }
+  
+  .space-y-16 > * + * {
+    margin-top: 3rem;
+  }
+  
+  .space-y-12 > * + * {
+    margin-top: 2rem;
+  }
+  
+  .space-y-8 > * + * {
+    margin-top: 1.5rem;
   }
 }

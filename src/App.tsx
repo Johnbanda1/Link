@@ -1,23 +1,36 @@
 import React, { useState } from 'react';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import { optimizeTouchEvents } from './utils/performanceOptimizations';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import LoadingSpinner from './components/LoadingSpinner';
-import {
-  LazyAbout,
-  LazyServices,
-  LazyProjects,
-  LazyStrategy,
-  LazyGovernance,
-  LazyGallery,
-  LazyStatistics,
-  LazyContact,
-  LazyFooter
-} from './components/LazyComponents';
+
+// Import components directly for better mobile compatibility
+import About from './components/About';
+import Services from './components/Services';
+import Projects from './components/Projects';
+import Statistics from './components/Statistics';
+import Gallery from './components/Gallery';
+import Strategy from './components/Strategy';
+import Governance from './components/Governance';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Update document title based on language
   React.useEffect(() => {
@@ -63,34 +76,16 @@ function App() {
       <Header language={language} onLanguageChange={setLanguage} />
       <main>
         <Hero language={language} />
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyAbout language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyServices language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyProjects language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyStatistics language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyGallery language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyStrategy language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyGovernance language={language} />
-        </Suspense>
-        <Suspense fallback={<LoadingSpinner />}>
-          <LazyContact language={language} />
-        </Suspense>
+        <About language={language} />
+        <Services language={language} />
+        <Projects language={language} />
+        <Statistics language={language} />
+        <Gallery language={language} />
+        <Strategy language={language} />
+        <Governance language={language} />
+        <Contact language={language} />
       </main>
-      <Suspense fallback={<LoadingSpinner />}>
-        <LazyFooter language={language} />
-      </Suspense>
+      <Footer language={language} />
     </div>
   );
 }

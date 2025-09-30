@@ -77,69 +77,69 @@ const About: React.FC<AboutProps> = ({ language }) => {
   };
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gray-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={containerVariants}
-          className="space-y-16"
+          className="space-y-8 sm:space-y-12 lg:space-y-16"
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 px-4 sm:px-0">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 px-2 sm:px-4 lg:px-0">
               {content[language].title}
             </h2>
-            <p className="text-lg sm:text-xl text-amber-600 font-semibold px-4 sm:px-0">
+            <p className="text-base sm:text-lg md:text-xl text-amber-600 font-semibold px-2 sm:px-4 lg:px-0">
               {content[language].subtitle}
             </p>
-            <p className="text-base sm:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-6 sm:px-4">
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-4xl mx-auto leading-relaxed px-4 sm:px-6 lg:px-4">
               {content[language].history}
             </p>
           </motion.div>
 
           {/* Mission & Vision */}
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
-            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            <motion.div variants={itemVariants} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-100">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-amber-100 rounded-lg sm:rounded-xl flex items-center justify-center">
                   <Target className="w-6 h-6 text-amber-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">{content[language].mission.title}</h3>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{content[language].mission.title}</h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{content[language].mission.text}</p>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{content[language].mission.text}</p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
+            <motion.div variants={itemVariants} className="bg-white rounded-xl sm:rounded-2xl p-4 sm:p-6 lg:p-8 shadow-lg border border-gray-100">
               <div className="flex items-center space-x-3 mb-6">
-                <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-lg sm:rounded-xl flex items-center justify-center">
                   <Eye className="w-6 h-6 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900">{content[language].vision.title}</h3>
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900">{content[language].vision.title}</h3>
               </div>
-              <p className="text-gray-600 leading-relaxed">{content[language].vision.text}</p>
+              <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{content[language].vision.text}</p>
             </motion.div>
           </div>
 
           {/* Values */}
-          <motion.div variants={itemVariants} className="space-y-8">
-            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 text-center px-4 sm:px-0">
+          <motion.div variants={itemVariants} className="space-y-6 sm:space-y-8">
+            <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-900 text-center px-2 sm:px-4 lg:px-0">
               {content[language].values.title}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {content[language].values.items.map((value, index) => (
                 <motion.div
                   key={value.title}
                   variants={itemVariants}
                   whileHover={{ y: -5 }}
-                  className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 text-center group hover:shadow-xl transition-all duration-300"
+                  className="bg-white rounded-lg sm:rounded-xl p-4 sm:p-6 shadow-lg border border-gray-100 text-center group hover:shadow-xl transition-all duration-300"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
-                    <value.icon className="w-8 h-8 text-white" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                    <value.icon className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8 text-white" />
                   </div>
-                  <h4 className="text-lg font-bold text-gray-900 mb-3">{value.title}</h4>
-                  <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                  <h4 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3">{value.title}</h4>
+                  <p className="text-gray-600 text-xs sm:text-sm leading-relaxed">{value.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -148,76 +148,76 @@ const About: React.FC<AboutProps> = ({ language }) => {
           {/* Visual Gallery */}
           <motion.div 
             variants={itemVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-12"
+            className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-4 mt-8 sm:mt-12"
           >
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 2 }}
-              className="relative overflow-hidden rounded-xl shadow-lg"
+              className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-lg"
             >
               <OptimizedImage
                 src="/assets/images/op2.webp"
                 alt="Mining operations"
-                className="w-full h-24 sm:h-32 object-cover"
+                className="w-full h-20 sm:h-24 lg:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
+              <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-white text-xs sm:text-sm font-semibold">
                 {language === 'en' ? 'Operations' : 'Opérations'}
               </div>
             </motion.div>
             
             <motion.div 
               whileHover={{ scale: 1.05, rotate: -2 }}
-              className="relative overflow-hidden rounded-xl shadow-lg"
+              className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-lg"
             >
               <OptimizedImage
                 src="/assets/images/op1.webp"
                 alt="Mining equipment"
-                className="w-full h-24 sm:h-32 object-cover"
+                className="w-full h-20 sm:h-24 lg:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
+              <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-white text-xs sm:text-sm font-semibold">
                 {language === 'en' ? 'Equipment' : 'Équipement'}
               </div>
             </motion.div>
             
             <motion.div 
               whileHover={{ scale: 1.05, rotate: 1 }}
-              className="relative overflow-hidden rounded-xl shadow-lg"
+              className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-lg"
             >
               <OptimizedImage
                 src="/assets/images/tm.webp"
                 alt="Team collaboration"
-                className="w-full h-24 sm:h-32 object-cover"
+                className="w-full h-20 sm:h-24 lg:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
+              <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-white text-xs sm:text-sm font-semibold">
                 {language === 'en' ? 'Team' : 'Équipe'}
               </div>
             </motion.div>
             
             <motion.div 
               whileHover={{ scale: 1.05, rotate: -1 }}
-              className="relative overflow-hidden rounded-xl shadow-lg"
+              className="relative overflow-hidden rounded-lg sm:rounded-xl shadow-lg"
             >
               <OptimizedImage
                 src="/assets/images/sf3.webp"
                 alt="Safety standards"
-                className="w-full h-24 sm:h-32 object-cover"
+                className="w-full h-20 sm:h-24 lg:h-32 object-cover"
                 width={200}
                 height={128}
                 lazy={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-              <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
+              <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 text-white text-xs sm:text-sm font-semibold">
                 {language === 'en' ? 'Safety' : 'Sécurité'}
               </div>
             </motion.div>
