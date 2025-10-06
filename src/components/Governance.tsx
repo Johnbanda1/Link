@@ -152,14 +152,14 @@ const Governance: React.FC<GovernanceProps> = ({ language }) => {
   };
 
   return (
-    <section id="governance" className="py-20 bg-gray-50">
+    <section id="governance" className="py-8 sm:py-12 lg:py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="space-y-16"
+          className="space-y-8 sm:space-y-12 lg:space-y-16"
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">

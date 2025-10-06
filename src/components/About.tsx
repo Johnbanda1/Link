@@ -77,14 +77,14 @@ const About: React.FC<AboutProps> = ({ language }) => {
   };
 
   return (
-    <section id="about" className="py-12 sm:py-16 lg:py-20 bg-gray-50 w-full">
+    <section id="about" className="py-8 sm:py-12 lg:py-16 bg-gray-50 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="space-y-8 sm:space-y-12 lg:space-y-16"
+          className="space-y-6 sm:space-y-8 lg:space-y-12"
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">

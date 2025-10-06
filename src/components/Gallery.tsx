@@ -183,7 +183,7 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
   };
 
   return (
-    <section id="gallery" className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
+    <section id="gallery" className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute inset-0" style={{
@@ -196,9 +196,9 @@ const Gallery: React.FC<GalleryProps> = ({ language }) => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="space-y-16"
+          className="space-y-8 sm:space-y-12 lg:space-y-16"
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">

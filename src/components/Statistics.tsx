@@ -141,7 +141,7 @@ const Statistics: React.FC<StatisticsProps> = ({ language }) => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 relative overflow-hidden">
+    <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -153,9 +153,9 @@ const Statistics: React.FC<StatisticsProps> = ({ language }) => {
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="space-y-16"
+          className="space-y-8 sm:space-y-12 lg:space-y-16"
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">

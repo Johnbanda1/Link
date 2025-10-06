@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
-import { Suspense, useEffect } from 'react';
+import { useEffect } from 'react';
 import { optimizeTouchEvents } from './utils/performanceOptimizations';
 import Header from './components/Header';
 import Hero from './components/Hero';
-import LoadingSpinner from './components/LoadingSpinner';
-
-// Import components directly for better mobile compatibility
 import About from './components/About';
 import Services from './components/Services';
 import Projects from './components/Projects';
@@ -18,19 +15,6 @@ import Footer from './components/Footer';
 
 function App() {
   const [language, setLanguage] = useState<'en' | 'fr'>('en');
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Update document title based on language
   React.useEffect(() => {
@@ -55,19 +39,23 @@ function App() {
         /* Improve mobile scrolling */
         body {
           -webkit-overflow-scrolling: touch;
+          overscroll-behavior-y: none;
         }
         
-        /* Optimize mobile animations */
+        /* Optimize mobile performance */
         * {
           -webkit-transform: translateZ(0);
           transform: translateZ(0);
+          will-change: auto;
         }
       }
     `;
     document.head.appendChild(style);
     
     return () => {
-      document.head.removeChild(style);
+      if (document.head.contains(style)) {
+        document.head.removeChild(style);
+      }
     };
   }, []);
   

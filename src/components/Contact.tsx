@@ -138,14 +138,14 @@ const Contact: React.FC<ContactProps> = ({ language }) => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-8 sm:py-12 lg:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="space-y-16"
+          className="space-y-8 sm:space-y-12 lg:space-y-16"
         >
           {/* Header */}
           <motion.div variants={itemVariants} className="text-center space-y-4">
